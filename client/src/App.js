@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter, Routes, Route } from "react-router-dom"
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
 import Home from './components/Home/Home'
 import SingleProduct from './components/SingleProduct/SingleProduct'
 import Category from './components/Category/Category'
@@ -17,7 +17,7 @@ const App = () => {
                     <Route path='/' element={<Home />} />
                     <Route path='/product/:id' element={<SingleProduct />} />
                     <Route path='/category/:id' element={<Category />} />
-                    <Route path='*' element={<Home />} />
+                    <Route path='*' element={<Navigate to={"/"} />} />
                 </Routes>
                 <Newsletter />
                 <Footer />
