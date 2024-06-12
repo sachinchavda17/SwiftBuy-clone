@@ -14,15 +14,15 @@ const Home = () => {
     getProducts();
   }, []);
   const getCategory = () => {
-    fecthDataFromApi("/api/categories?populate=*").then((res) => {
+    fecthDataFromApi("/api/categories/getallcategories").then((res) => {
       console.log(res);
-      setCategories(res);
+      setCategories(res.categories);
     });
   };
   const getProducts = () => {
-    fecthDataFromApi("/api/products?populate=*").then((res) => {
+    fecthDataFromApi("/api/products/getallproducts").then((res) => {
       console.log(res);
-      setProducts(res);
+      setProducts(res.products);
     });
   };
   return (

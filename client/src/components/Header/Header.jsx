@@ -7,6 +7,7 @@ import Cart from "../Cart/Cart";
 import { Link, useNavigate } from "react-router-dom";
 import Search from "./Search/Search";
 import { Context } from "../../utils/context";
+import ThemeToggle from "../toggleTheme/ThemeToggle";
 const Header = () => {
   const [scroll, setScroll] = useState(false);
   const [showCart, setShowCart] = useState(false);
@@ -43,6 +44,7 @@ const Header = () => {
               <CgShoppingCart />
               {!!cartCount  && <span>{cartCount}</span>}
             </span>
+            <ThemeToggle/>
           </div>
         </div>
       </header>

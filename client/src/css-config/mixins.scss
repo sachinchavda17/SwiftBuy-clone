@@ -1,29 +1,43 @@
+:root {
+  --background-color: white;
+  --text-color: black;
+  --primary-color: #8e2de2;
+  --secondary-color: #6516aa;
+}
+
+[data-theme="dark"] {
+  --background-color: #212121;
+  --text-color: white;
+  --primary-color: #4b4b4b;
+  --secondary-color: #2e2e2e;
+}
+
 @mixin sm {
-    @media only screen and (min-width: 640px) {
-        @content;
-    }
+  @media only screen and (min-width: 640px) {
+    @content;
+  }
 }
 
 @mixin md {
-    @media only screen and (min-width: 768px) {
-        @content;
-    }
+  @media only screen and (min-width: 768px) {
+    @content;
+  }
 }
 
 @mixin lg {
-    @media only screen and (min-width: 1024px) {
-        @content;
-    }
+  @media only screen and (min-width: 1024px) {
+    @content;
+  }
 }
 
 @mixin xl {
-    @media only screen and (min-width: 1280px) {
-        @content;
-    }
+  @media only screen and (min-width: 1280px) {
+    @content;
+  }
 }
 
 @mixin xxl {
-    @media only screen and (min-width: 1536px) {
-        @content;
-    }
+  @media only screen and (min-width: 1536px) {
+    @content;
+  }
 }

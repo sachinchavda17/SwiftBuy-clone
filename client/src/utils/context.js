@@ -17,21 +17,22 @@ const AppContext = ({ children }) => {
 
   useEffect(() => {
     let count = 0
-    cartItems.map((item)=>count += item.attributes.quantity)
+    cartItems.forEach((item) => (count += item.quantity));
     setCartCount(count)
 
     let subTotal = 0
-    cartItems.map((item)=>subTotal += item.attributes.price * item.attributes.quantity)
+    // cartItems.map((item)=>subTotal += item.price * item.quantity)
+    cartItems.forEach((item) => (subTotal += item.price * item.quantity));
     setCartSubTotal(subTotal)
   }, [cartItems]);
 
   const handleAddToCart = (product, quantity) => {
     let items = [...cartItems];
-    let index = items?.findIndex((p) => p.id === product?.id);
+    let index = items?.findIndex((p) => p._id === product?._id);
     if (index !== -1) {
-      items[index].attributes.quantity += quantity;
+      items[index].quantity += quantity;
     } else {
-      product.attributes.quantity = quantity;
+      product.quantity = quantity;
       items = [...items, product];
     }
     setCartItems(items);
@@ -39,18 +40,18 @@ const AppContext = ({ children }) => {
 
   const handleRemoveFromCart = (product) => {
     let items = [...cartItems];
-    items = items?.filter((p) => p.id !== product?.id);
+    items = items?.filter((p) => p._id !== product._id);
     setCartItems(items);
   };
 
   const handleCartProductQuantity = (type, product) => {
     let items = [...cartItems];
-    let index = items?.findIndex((p) => p.id === product.id);
+    let index = items.findIndex((p) => p._id === product._id);
     if (type === "inc") {
-      items[index].attributes.quantity += 1;
+      items[index].quantity += 1;
     } else if (type === "dec") {
-      if (items[index].attributes.quantity === 1) return;
-      items[index].attributes.quantity -= 1;
+      if (items[index].quantity === 1) return;
+      items[index].quantity -= 1;
     }
     setCartItems(items);
   };
