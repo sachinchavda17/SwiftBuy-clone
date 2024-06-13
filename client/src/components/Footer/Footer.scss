@@ -1,6 +1,7 @@
 @import "../../css-config/mixins.scss";
 .footer {
     width: 100%;
+    background-color: var(--background-color);
     .footer-content {
         padding: 50px 20px;
         max-width: 1200px;
@@ -21,11 +22,12 @@
                 }
             }
             .title {
+                color: var(--text-color);
                 margin-bottom: 20px;
                 font-size: 20px;
             }
             .text {
-                color: rgba(0, 0, 0, 0.5);
+                color: var(--fifth-color);
                 font-size: 14px;
             }
             .c-item {
@@ -36,7 +38,7 @@
                     font-size: 14px;
                     margin-right: 10px;
                     margin-top: 4px;
-                    color: rgba(0, 0, 0, 0.5);
+                    color: var(--fifth-color);
                 }
             }
             span {
@@ -49,7 +51,7 @@
         }
     }
     .bottom-bar {
-        border-top: 1px solid rgba(0, 0, 0, 0.1);
+        border-top: 1px solid var(--forth-color);
         .bottom-bar-content {
             padding: 20px;
             display: flex;
@@ -68,7 +70,7 @@
             }
             .text {
                 font-size: 12px;
-                color: rgba(0, 0, 0, 0.5);
+                color:var(--fifth-color);
             }
         }
     }

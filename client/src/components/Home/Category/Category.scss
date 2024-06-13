@@ -10,7 +10,7 @@
       flex-flow: wrap;
       gap: 10px;
       .category {
-        background-color: black;
+        background-color: var(--background-color);
         width: calc(50% - 5px);
         cursor: pointer;
         overflow: hidden;

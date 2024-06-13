@@ -2,7 +2,7 @@ import "./Cart.scss";
 import { MdClose } from "react-icons/md";
 import { BsCartX } from "react-icons/bs";
 import CartItem from "./CartItem/CartItem";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { Context } from "../../utils/context";
 import { loadStripe } from "@stripe/stripe-js";
 import { makePaymentRequest } from "../../utils/api";
@@ -10,6 +10,13 @@ import { makePaymentRequest } from "../../utils/api";
 const Cart = ({ setShowCart }) => {
   const { cartSubTotal, cartItems } = useContext(Context);
   const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY);
+
+  useEffect(() => {
+    document.body.style.overflowY = "hidden";
+    return () => {
+      document.body.style.overflowY = "scroll";
+    };
+  }, []);
 
   const handlePayment = async () => {
     try {

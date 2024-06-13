@@ -19,7 +19,7 @@
       }
       .left {
         width: 100%;
-        background-color: rgba(0, 0, 0, 0.05);
+        background-color: var(--ternary-color);
         flex-shrink: 0;
         @include md {
           width: 600px;
@@ -34,6 +34,7 @@
         display: flex;
         flex-direction: column;
         padding-top: 20px;
+        color: var(--text-color);
         @include md {
           padding: 0 35px;
         }
@@ -55,7 +56,7 @@
           font-size: 14px;
           line-height: 20px;
           margin-bottom: 20px;
-          color: #6b6b6b;
+          color: var(--sixth-color);
           @include md {
             font-size: 16px;
             line-height: 24px;
@@ -69,7 +70,7 @@
           .quantity-buttons {
             width: fit-content;
             display: flex;
-            border: 2px solid rgba(0, 0, 0, 0.2);
+            border: 2px solid var(--forth-color);
             margin-right: 10px;
             height: 50px;
             span {
@@ -81,13 +82,13 @@
               cursor: pointer;
               color: #6b6b6b;
               &:nth-child(1) {
-                border-right: 2px solid rgba(0, 0, 0, 0.2);
+                border-right: 2px solid var(--forth-color);
               }
               &:nth-child(2) {
                 width: 60px;
               }
               &:nth-child(3) {
-                border-left: 2px solid rgba(0, 0, 0, 0.2);
+                border-left: 2px solid var(--forth-color);
               }
             }
           }
@@ -101,10 +102,10 @@
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            color: white;
+            color: var(--text-color);
             font-size: 16px;
-            background-color: #8e2de2;
-            border-bottom: 3px solid #6516aa;
+            background-color: var(--primary-color);
+            border-bottom: 3px solid var(--secondry-color);
             flex-grow: 1;
             @include md {
               flex-grow: unset;
@@ -116,7 +117,7 @@
         margin: 20px 0;
         height: 1px;
         width: 100%;
-        background-color: rgba(0, 0, 0, 0.1);
+        background-color: var(--forth-color);
       }
       .info-item {
         .text-bold {
@@ -129,11 +130,11 @@
           span {
             font-size: 16px;
             font-weight: 400;
-            cursor: pointer;
             color: #6b6b6b;
           }
           svg {
             margin: 0 5px;
+            cursor: pointer;
           }
         }
       }

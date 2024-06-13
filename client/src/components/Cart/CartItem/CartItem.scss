@@ -5,7 +5,7 @@
     display: flex;
     gap: 10px;
     .img-container {
-      background-color: rgba(0, 0, 0, 0.05);
+      background-color: var(--ternary-color);
       width: 60px;
       height: 60px;
       flex-shrink: 0;
@@ -35,7 +35,7 @@
         line-height: 12px;
         font-weight: 600;
         .highlight {
-          color: #8e2de2;
+          color: var(--primary-color);
         }
       }
       svg {
@@ -47,7 +47,7 @@
       .quantity-buttons {
         width: fit-content;
         display: flex;
-        border: 1px solid rgba(0, 0, 0, 0.2);
+        border: 1px solid var(--forth-color);
         height: 30px;
         margin-bottom: 8px;
         span {
@@ -60,20 +60,20 @@
           color: #6b6b6b;
           &:nth-child(1) {
             font-size: 18px;
-            border-right: 1px solid rgba(0, 0, 0, 0.2);
+            border-right: 1px solid var(--forth-color);
           }
           &:nth-child(2) {
             width: 40px;
           }
           &:nth-child(3) {
             font-size: 18px;
-            border-left: 1px solid rgba(0, 0, 0, 0.2);
+            border-left: 1px solid var(--forth-color);
           }
         }
       }
     }
     &:hover {
-      background-color: rgba(0, 0, 0, 0.05);
+      background-color:  var(--ternary-color);
     }
   }
 }

@@ -14,13 +14,15 @@
     "axios": "^1.2.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-hook-form": "^7.51.5",
+    "react-hot-toast": "^2.4.1",
     "react-icons": "^4.7.1",
     "react-router-dom": "^6.4.5",
     "react-scripts": "5.0.1",
     "sass": "^1.56.2",
     "web-vitals": "^2.1.4"
   },
-  "proxy": "https://swift-buy-backend.vercel.app",
+  "proxy": "http://localhoat:8000",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

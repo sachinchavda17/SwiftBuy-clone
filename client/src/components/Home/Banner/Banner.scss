@@ -42,7 +42,7 @@
       }
     }
     .text-content {
-      color: white;
+      color: var(--text-color);
       text-align: center;
       display: flex;
       flex-direction: column;
@@ -61,7 +61,7 @@
         font-size: 70px;
         font-weight: 700;
         line-height: 1;
-        color: white;
+        color: var(--text-color);
         margin-bottom: 20px;
         @include md {
           font-size: 120px;
@@ -91,13 +91,13 @@
           font-size: 13px;
           font-weight: 500;
           width: fit-content;
-          border: 2px solid white;
+          border: 2px solid var(--text-color);
           padding: 10px 20px;
           transition: all ease 0.3s;
           cursor: pointer;
           &.v2 {
-            background-color: white;
-            color: black;
+            background-color: var(--text-color);
+            color: var(--background-color);
           }
           &:hover {
             opacity: 0.6;

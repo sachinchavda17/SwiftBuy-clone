@@ -1,10 +1,17 @@
 import { MdClose } from "react-icons/md";
 import "./Search.scss";
 import prod from "../../../assets/products/earbuds-prod-1.webp";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useFetch from "../../../hooks/useFetch";
 const Search = ({ setShowSearch }) => {
+
+  useEffect(() => {
+    document.body.style.overflowY = "hidden";
+    return () => {
+      document.body.style.overflowY = "scroll";
+    };
+  }, []);
   const [query, setQuery] = useState("");
   const navigate = useNavigate();
   let { data } = useFetch(
