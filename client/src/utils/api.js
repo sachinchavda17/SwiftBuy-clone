@@ -17,6 +17,16 @@ export const fecthDataFromApi = async (url) => {
     }
 }
 
+export const fetchDataPost = async (url,ndata)=>{
+    try {
+        const { data } = await axios.post(process.env.REACT_APP_DEV_URL + url, ndata)
+        return data
+    } catch (error) {
+        console.log(error)
+        return error
+    }
+}
+
 export const makePaymentRequest = axios.create({
     baseURL:process.env.REACT_APP_DEV_URL,
     headers: {

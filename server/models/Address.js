@@ -1,16 +1,6 @@
 import mongoose from "mongoose";
 
 const AddressSchema = new mongoose.Schema({
-  firstName: {
-    type: String,
-  },
-  lastName: {
-    type: String,
-  },
-  email: {
-    type: String,
-    required: true,
-  },
   phone: {
     type: Number,
   },

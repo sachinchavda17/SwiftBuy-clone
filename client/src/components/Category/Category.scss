@@ -13,6 +13,7 @@
   }
   .category-title {
     font-size: 24px;
+    color: var(--text-color);
     @include md {
       font-size: 34px;
     }

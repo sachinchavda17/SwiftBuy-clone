@@ -12,8 +12,6 @@ const useFetch = (endpoint) => {
         console.log(res)
     }
     return { data }
-
-
 }
 
 export default useFetch

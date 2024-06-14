@@ -125,7 +125,7 @@ export const removeProductController = async (req, res) => {
 
 export const getProductController = async (req, res) => {
   try {
-    const { pid,cid } = req.params;
+    const { pid, cid } = req.params;
 
     // Fetch the product by ID
     const product = await Product.findById(pid).populate("category");
@@ -136,7 +136,7 @@ export const getProductController = async (req, res) => {
     // Fetch related products based on the category of the fetched product
     const relatedProducts = await Product.find({
       category: cid, // Assuming `cId` is the category ID field in your Product schema
-      _id: { $ne: pid } // Exclude the fetched product itself
+      _id: { $ne: pid }, // Exclude the fetched product itself
     });
 
     res.status(200).json({ product, relatedProducts });
@@ -145,7 +145,6 @@ export const getProductController = async (req, res) => {
     res.status(500).json({ error: "Internal Server Error!" });
   }
 };
-
 
 export const getAllProductController = async (req, res) => {
   try {
@@ -156,6 +155,22 @@ export const getAllProductController = async (req, res) => {
     res.status(200).json({ products });
   } catch (err) {
     console.log("Error in getting products: " + err.message);
+    res.status(500).json({ error: "Internal Server Error!" });
+  }
+};
+
+export const getSearchProductController = async (req, res) => {
+  try {
+    const { query } = req.params;
+    const regexPattern = new RegExp(query, "i");
+
+    const products = await Product.find({ title: { $regex: regexPattern } });
+    if (products.length === 0) {
+      return res.status(404).json({ error: "No products found!" });
+    }
+    res.status(200).json({ products });
+  } catch (err) {
+    console.log("Error in getting search products: " + err.message);
     res.status(500).json({ error: "Internal Server Error!" });
   }
 };

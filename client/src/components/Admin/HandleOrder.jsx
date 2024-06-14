@@ -1,11 +1,12 @@
 import React from 'react'
 
-const Signup = () => {
+const HandleOrder = () => {
   return (
     <div>
+      HandleOrder
       
     </div>
   )
 }
 
-export default Signup
+export default HandleOrder

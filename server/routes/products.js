@@ -4,6 +4,7 @@ import {
   addProductController,
   getAllProductController,
   getProductController,
+  getSearchProductController,
   removeProductController,
   updateProductController,
 } from "../controllers/productsController.js";
@@ -15,5 +16,6 @@ router.post("/updateproduct/:pid",  updateProductController);
 router.patch("/removeproduct/:pid",  removeProductController);
 router.get("/getproduct/:pid",  getProductController);
 router.get("/getallproducts", getAllProductController);
+router.get("/search/:query", getSearchProductController);
 
 export default router;

@@ -5,9 +5,6 @@ const addressController = async (req, res) => {
   try {
     const {
       userId,
-      firstName,
-      lastName,
-      email,
       phone,
       street,
       city,
@@ -21,9 +18,6 @@ const addressController = async (req, res) => {
 
     // Create and save the new address
     const newAddress = new Address({
-      firstName,
-      lastName,
-      email,
       phone,
       street,
       city,

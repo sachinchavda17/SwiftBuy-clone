@@ -13,6 +13,9 @@ const Header = () => {
   const [showCart, setShowCart] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
   const { cartCount } = useContext(Context);
+  const { user, setUser } = useContext(Context);
+  const isAdmin = user?.role === "admin";
+
   const navigate = useNavigate();
   const handleScroll = () => {
     const offset = window.scrollY;
@@ -22,29 +25,37 @@ const Header = () => {
       setScroll(false);
     }
   };
+
   useEffect(() => {
+    const userData = JSON.parse(localStorage.getItem("swiftbuyUser")) || null;
+    setUser(userData?.user);
     window.addEventListener("scroll", handleScroll);
   }, []);
+  
   return (
     <>
       <header className={`main-header ${scroll ? "sticky-header" : ""}`}>
         <div className="header-content">
           <ul className="left">
             <li onClick={() => navigate("/")}>Home</li>
-            <li>About</li>
-            <li>Categories</li>
+            {/* <li>About</li> */}
+            {/* <li>Categories</li> */}
+            {!user && <li onClick={() => navigate("/login")}>Login</li>}
+            {isAdmin && <li onClick={() => navigate("/admin")}>Admin</li>}
           </ul>
           <div className="center" onClick={() => navigate("/")}>
             SwiftBuy
           </div>
           <div className="right">
             <TbSearch onClick={() => setShowSearch(true)} />
-            <AiOutlineHeart />
-            <span className="cart-icon" onClick={() => setShowCart(true)}>
-              <CgShoppingCart />
-              {!!cartCount  && <span>{cartCount}</span>}
-            </span>
-            <ThemeToggle/>
+            {!isAdmin && <AiOutlineHeart />}
+            {!isAdmin && (
+              <span className="cart-icon" onClick={() => setShowCart(true)}>
+                <CgShoppingCart />
+                {!!cartCount && <span>{cartCount}</span>}
+              </span>
+            )}
+            <ThemeToggle />
           </div>
         </div>
       </header>

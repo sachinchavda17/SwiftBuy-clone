@@ -1,10 +1,14 @@
 import { MdClose } from "react-icons/md";
 import "./Search.scss";
-import prod from "../../../assets/products/earbuds-prod-1.webp";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
-import useFetch from "../../../hooks/useFetch";
+import axios from "axios";
+import debounce from "lodash.debounce";
+
 const Search = ({ setShowSearch }) => {
+  const [searchProducts, setSearchProducts] = useState([]);
+  const [query, setQuery] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     document.body.style.overflowY = "hidden";
@@ -12,12 +16,30 @@ const Search = ({ setShowSearch }) => {
       document.body.style.overflowY = "scroll";
     };
   }, []);
-  const [query, setQuery] = useState("");
-  const navigate = useNavigate();
-  let { data } = useFetch(
-    `/api/products?populate=*&filters[title][$contains]=${query}`
-  );
-  if (!query.length) data = null;
+
+  const callApi = async (searchQuery) => {
+    if (!searchQuery) {
+      setSearchProducts([]);
+      return;
+    }
+    try {
+      const response = await axios.get(
+        `${process.env.REACT_APP_DEV_URL}/api/products/search/${searchQuery}`
+      );
+      setSearchProducts(response.data.products);
+    } catch (error) {
+      console.error("Error fetching search results:", error);
+      setSearchProducts([]);
+    }
+  };
+
+  // Debounce the API call to avoid making requests on every keystroke
+  const debouncedSearch = useCallback(debounce(callApi, 300), []);
+
+  useEffect(() => {
+    debouncedSearch(query);
+  }, [query, debouncedSearch]);
+
   return (
     <div className="search-modal">
       <div className="form-field">
@@ -32,30 +54,28 @@ const Search = ({ setShowSearch }) => {
       </div>
       <div className="search-result-content">
         <div className="search-results">
-          {data?.data?.map((item) => (
-            <div
-              key={item.id}
-              className="search-result-item"
-              onClick={() => {
-                navigate("/product/" + item.id);
-                setShowSearch(false);
-              }}
-            >
-              <div className="img-container">
-                <img
-                  src={
-                    process.env.REACT_APP_DEV_URL +
-                    item?.attributes?.img?.data[0]?.attributes.url
-                  }
-                  alt=""
-                />
+          {searchProducts.length > 0 ? (
+            searchProducts.map((item) => (
+              <div
+                key={item._id}
+                className="search-result-item"
+                onClick={() => {
+                  navigate("/product/" + item._id);
+                  setShowSearch(false);
+                }}
+              >
+                <div className="img-container">
+                  <img src={item?.img} alt="" />
+                </div>
+                <div className="prod-details">
+                  <span className="name">{item?.title}</span>
+                  <span className="desc">{item?.desc}</span>
+                </div>
               </div>
-              <div className="prod-details">
-                <span className="name">{item?.attributes?.title}</span>
-                <span className="desc">{item?.attributes?.desc}</span>
-              </div>
-            </div>
-          ))}
+            ))
+          ) : (
+            <div className="no-results">No products found.</div>
+          )}
         </div>
       </div>
     </div>

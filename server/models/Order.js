@@ -1,19 +1,12 @@
 import mongoose from "mongoose";
 
-const ProductSchema = new mongoose.Schema({
-  productId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Product",
-  },
-});
-
 const OrderSchema = new mongoose.Schema(
   {
     userId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
     },
-    products: [ProductSchema],
+    products: [{ type: mongoose.Schema.Types.ObjectId, ref: "Product" }],
     paymentMethod: {
       type: String,
       required: true,

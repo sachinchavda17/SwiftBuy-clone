@@ -9,21 +9,22 @@ const AppContext = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
   const [cartCount, setCartCount] = useState(0);
   const [cartSubTotal, setCartSubTotal] = useState(0);
+  const [user, setUser] = useState(null);
   const location = useLocation();
 
-  useEffect(()=>{
-    window.scrollTo(0,0)
-  },[location])
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
 
   useEffect(() => {
-    let count = 0
+    let count = 0;
     cartItems.forEach((item) => (count += item.quantity));
-    setCartCount(count)
+    setCartCount(count);
 
-    let subTotal = 0
+    let subTotal = 0;
     // cartItems.map((item)=>subTotal += item.price * item.quantity)
     cartItems.forEach((item) => (subTotal += item.price * item.quantity));
-    setCartSubTotal(subTotal)
+    setCartSubTotal(subTotal);
   }, [cartItems]);
 
   const handleAddToCart = (product, quantity) => {
@@ -72,6 +73,8 @@ const AppContext = ({ children }) => {
         handleAddToCart,
         handleRemoveFromCart,
         handleCartProductQuantity,
+        user,
+        setUser,
       }}
     >
       {children}

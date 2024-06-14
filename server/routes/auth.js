@@ -7,7 +7,7 @@ const router = express.Router()
 
 router.post("/signup",signupController)
 router.post("/login",loginController)
-router.post("/address",protectedRoute,addressController)
+router.post("/address",addressController)
 
 
 export default router

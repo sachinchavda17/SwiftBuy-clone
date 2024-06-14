@@ -64,10 +64,10 @@ console.log(data.relatedProducts)
             <span className="divider" />
 
             <div className="info-item">
-              <div className="text-bold">
+              <div className="text-bolds">
                 Category : <span>{product?.category?.title}</span>
               </div>
-              <div className="text-bold">
+              <div className="text-bolds">
                 Share :
                 <span className="social-icons">
                   <FaFacebookF size={16} />

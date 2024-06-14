@@ -4,13 +4,12 @@ import { BsCartX } from "react-icons/bs";
 import CartItem from "./CartItem/CartItem";
 import { useContext, useEffect } from "react";
 import { Context } from "../../utils/context";
-import { loadStripe } from "@stripe/stripe-js";
-import { makePaymentRequest } from "../../utils/api";
+
+import { useNavigate } from "react-router-dom";
 
 const Cart = ({ setShowCart }) => {
-  const { cartSubTotal, cartItems } = useContext(Context);
-  const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY);
-
+  const navigate = useNavigate()
+  const { cartSubTotal, cartItems, user } = useContext(Context);
   useEffect(() => {
     document.body.style.overflowY = "hidden";
     return () => {
@@ -18,19 +17,7 @@ const Cart = ({ setShowCart }) => {
     };
   }, []);
 
-  const handlePayment = async () => {
-    try {
-        const stripe = await stripePromise;
-        const res = await makePaymentRequest.post("/api/orders", {
-            products: cartItems,
-        });
-        await stripe.redirectToCheckout({
-            sessionId: res.data.stripeSession.id,
-        });
-    } catch (err) {
-        console.log(err);
-    }
-};
+
 
   return (
     <div className="cart-panel">
@@ -51,8 +38,11 @@ const Cart = ({ setShowCart }) => {
                 <span className="text">Subtotal : </span>
                 <span className="text total">&#8377; {cartSubTotal} </span>
               </div>
-              <div className="button" >
-                <div className="checkout-cta" onClick={handlePayment} >Checkout</div>
+              <div className="button">
+                {/* <div className="checkout-cta" onClick={handlePayment}> */}
+                <div className="checkout-cta" onClick={()=>navigate("/check")}>
+                  Checkout
+                </div>
               </div>
             </div>
           </>

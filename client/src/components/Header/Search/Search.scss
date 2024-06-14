@@ -7,7 +7,7 @@
   z-index: 990;
   top: 0;
   left: 0;
-  background-color: white;
+  background-color: var(--background-color);
   transform: translateY(100%);
   animation: slideSearchWindow 0.5s ease forwards;
   .form-field {
@@ -15,8 +15,9 @@
     display: flex;
     justify-content: center;
     padding: 10px 50px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid var(--forth-color);
     position: relative;
+
     @include md {
       padding: 20px 0;
     }
@@ -27,10 +28,12 @@
       text-align: center;
       font-size: 20px;
       font-weight: 600;
-      color: #212121;
+      color: var(--text-color);
       outline: none;
       border: none;
       text-transform: uppercase;
+      background-color: var(--background-color);
+
       @include md {
         font-size: 35px;
         height: 80px;
@@ -42,6 +45,7 @@
       right: 20px;
       top: 50%;
       transform: translateY(-50%);
+      color: var(--text-color);
       cursor: pointer;
       @include md {
         right: 40px;
@@ -67,10 +71,10 @@
         align-items: center;
         gap: 10px;
         padding: 10px 0;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        border-bottom: 1px solid var(--forth-color);
         cursor: pointer;
         .img-container {
-          background-color: rgba(0, 0, 0, 0.05);
+          background-color: var(--ternary-color);
           width: 60px;
           height: 60px;
           flex-shrink: 0;
@@ -83,8 +87,10 @@
           overflow: hidden;
           .name {
             text-overflow: ellipsis;
+
             white-space: nowrap;
             overflow: hidden;
+            color: var(--text-color);
             font-size: 16px;
             line-height: 1;
             margin-bottom: 10px;
@@ -98,11 +104,20 @@
             text-overflow: ellipsis;
             white-space: nowrap;
             overflow: hidden;
-            color: rgba(0, 0, 0, 0.5);
+            color: var(--fifth-color);
           }
         }
       }
     }
+  }
+  .no-results {
+    margin-top: 10px;
+    color: var(--sixth-color);
+    font-size: 18px;
+    text-align: center;
+    padding: 20px;
+    background-color: var(--seventh-color);
+    border-radius: 5px;
   }
 }
 

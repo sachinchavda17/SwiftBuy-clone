@@ -120,10 +120,11 @@
         background-color: var(--forth-color);
       }
       .info-item {
-        .text-bold {
+        .text-bolds {
           font-size: 18px;
           font-weight: 500;
-          display: block;
+          display: flex;
+          align-items: center;
           &:nth-child(1) {
             margin-bottom: 20px;
           }
@@ -131,13 +132,21 @@
             font-size: 16px;
             font-weight: 400;
             color: #6b6b6b;
+            margin-right: 10px;
+          padding-left: 5px;
           }
-          svg {
-            margin: 0 5px;
-            cursor: pointer;
+          .social-icons {
+            display: flex;
+            align-items: center;
+            svg {
+              margin-right: 10px;
+              cursor: pointer;
+              color: #6b6b6b;
+            }
           }
         }
       }
+
     }
   }
 }
